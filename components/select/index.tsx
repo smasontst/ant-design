@@ -14,7 +14,7 @@ export interface AbstractSelectProps {
   prefixCls?: string;
   className?: string;
   showAction?: string | string[];
-  size?: (typeof SelectSizes)[number];
+  size?: typeof SelectSizes[number];
   notFoundContent?: React.ReactNode | null;
   transitionName?: string;
   choiceTransitionName?: string;
@@ -58,7 +58,7 @@ const ModeOptions = tuple(
   'combobox',
   'SECRET_COMBOBOX_MODE_DO_NOT_USE',
 );
-export type ModeOption = (typeof ModeOptions)[number];
+export type ModeOption = typeof ModeOptions[number];
 export interface SelectProps<T = SelectValue> extends AbstractSelectProps {
   value?: T;
   defaultValue?: T;
@@ -162,6 +162,17 @@ export default class Select<T = SelectValue> extends React.Component<SelectProps
 
   saveSelect = (node: any) => {
     this.rcSelect = node;
+    const { disabled } = this.props;
+    const selection = node.selectionRef;
+    if (selection) {
+      if (disabled) {
+        selection.setAttribute('disabled', true);
+        selection.setAttribute('aria-disabled', true);
+      } else {
+        selection.removeAttribute('disabled');
+        selection.setAttribute('aria-disabled', false);
+      }
+    }
   };
 
   focus() {
@@ -207,6 +218,7 @@ export default class Select<T = SelectValue> extends React.Component<SelectProps
       clearIcon,
       menuItemSelectedIcon,
       showArrow,
+      disabled,
       ...restProps
     } = this.props;
     const rest = omit(restProps, ['inputIcon']);
@@ -266,6 +278,8 @@ export default class Select<T = SelectValue> extends React.Component<SelectProps
         clearIcon={finalClearIcon}
         menuItemSelectedIcon={finalMenuItemSelectedIcon}
         showArrow={showArrow}
+        disabled={disabled}
+        ariaDisabled={disabled}
         {...rest}
         {...modeConfig}
         prefixCls={prefixCls}
