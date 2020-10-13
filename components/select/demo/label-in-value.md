@@ -32,6 +32,7 @@ ReactDOM.render(
     defaultValue={{ key: 'lucy' }}
     style={{ width: 120 }}
     onChange={handleChange}
+    aria-label="my-label-in-value-example"
   >
     <Option value="jack">Jack (100)</Option>
     <Option value="lucy">Lucy (101)</Option>

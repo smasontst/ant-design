@@ -28,7 +28,13 @@ function handleChange(value) {
 }
 
 ReactDOM.render(
-  <Select mode="tags" style={{ width: '100%' }} placeholder="Tags Mode" onChange={handleChange}>
+  <Select
+    aria-label="my-label-8"
+    mode="tags"
+    style={{ width: '100%' }}
+    placeholder="Tags Mode"
+    onChange={handleChange}
+  >
     {children}
   </Select>,
   mountNode,

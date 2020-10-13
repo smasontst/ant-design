@@ -65,6 +65,7 @@ class UserRemoteSelect extends React.Component {
     return (
       <Select
         mode="multiple"
+        aria-label="my-multiple-label"
         labelInValue
         value={value}
         placeholder="Select users"

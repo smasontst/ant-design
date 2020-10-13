@@ -24,7 +24,12 @@ function handleChange(value) {
 
 ReactDOM.render(
   <div>
-    <Select defaultValue="lucy" style={{ width: 120 }} onChange={handleChange}>
+    <Select
+      aria-label="my-label-2"
+      defaultValue="lucy"
+      style={{ width: 120 }}
+      onChange={handleChange}
+    >
       <Option value="jack">Jack</Option>
       <Option value="lucy">Lucy</Option>
       <Option value="disabled" disabled>
@@ -32,10 +37,10 @@ ReactDOM.render(
       </Option>
       <Option value="Yiminghe">yiminghe</Option>
     </Select>
-    <Select defaultValue="lucy" style={{ width: 120 }} disabled>
+    <Select aria-label="my-label-3" defaultValue="lucy" style={{ width: 120 }} disabled>
       <Option value="lucy">Lucy</Option>
     </Select>
-    <Select defaultValue="lucy" style={{ width: 120 }} loading>
+    <Select aria-label="my-label-4" defaultValue="lucy" style={{ width: 120 }} loading>
       <Option value="lucy">Lucy</Option>
     </Select>
   </div>,

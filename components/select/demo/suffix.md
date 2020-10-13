@@ -40,7 +40,13 @@ ReactDOM.render(
       </Option>
       <Option value="Yiminghe">yiminghe</Option>
     </Select>
-    <Select suffixIcon={mehIcon} defaultValue="lucy" style={{ width: 120 }} disabled>
+    <Select
+      aria-label="my-label-7"
+      suffixIcon={mehIcon}
+      defaultValue="lucy"
+      style={{ width: 120 }}
+      disabled
+    >
       <Option value="lucy">Lucy</Option>
     </Select>
   </div>,

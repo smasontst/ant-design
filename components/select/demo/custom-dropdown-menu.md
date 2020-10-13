@@ -39,6 +39,7 @@ class App extends React.Component {
       <Select
         style={{ width: 240 }}
         placeholder="custom dropdown render"
+        aria-label="custom-dropdown-example"
         dropdownRender={menu => (
           <div>
             {menu}

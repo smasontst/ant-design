@@ -25,6 +25,7 @@ function handleChange(value) {
 ReactDOM.render(
   <Select
     mode="multiple"
+    aria-label="my-multiple-label"
     style={{ width: '100%' }}
     placeholder="select one country"
     defaultValue={['china']}
@@ -60,8 +61,8 @@ ReactDOM.render(
 );
 ```
 
-````css
-span[role="img"] {
+```css
+span[role='img'] {
   margin-right: 6px;
 }
-````
+```

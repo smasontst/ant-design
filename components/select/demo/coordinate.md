@@ -54,6 +54,7 @@ class App extends React.Component {
           defaultValue={provinceData[0]}
           style={{ width: 120 }}
           onChange={this.handleProvinceChange}
+          aria-label="coordinate-1"
         >
           {provinceData.map(province => (
             <Option key={province}>{province}</Option>
@@ -63,6 +64,7 @@ class App extends React.Component {
           style={{ width: 120 }}
           value={this.state.secondCity}
           onChange={this.onSecondCityChange}
+          aria-label="coordinate-2"
         >
           {cities.map(city => (
             <Option key={city}>{city}</Option>

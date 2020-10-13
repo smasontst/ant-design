@@ -42,6 +42,7 @@ export interface AbstractSelectProps {
   autoClearSearchValue?: boolean;
   dropdownRender?: (menu?: React.ReactNode, props?: SelectProps) => React.ReactNode;
   loading?: boolean;
+  ['aria-label']?: string;
 }
 
 export interface LabeledValue {
@@ -162,16 +163,32 @@ export default class Select<T = SelectValue> extends React.Component<SelectProps
 
   saveSelect = (node: any) => {
     this.rcSelect = node;
-    const { disabled } = this.props;
-    const selection = node.selectionRef;
-    if (selection) {
-      if (disabled) {
-        selection.setAttribute('disabled', true);
-        selection.setAttribute('aria-disabled', true);
+    if (!node) {
+      return;
+    }
+    const selectionRef = node.selectionRef;
+    if (selectionRef) {
+      const selectedItemLabelEl = selectionRef.querySelector(
+        '.ant-select-selection-selected-value',
+      );
+      if (this.isCombobox() && selectedItemLabelEl) {
+        selectedItemLabelEl.setAttribute('role', 'textbox');
       } else {
-        selection.removeAttribute('disabled');
-        selection.setAttribute('aria-disabled', false);
+        selectionRef.removeAttribute('role');
+        selectionRef.removeAttribute('aria-autocomplete');
       }
+
+      if (this.props.disabled) {
+        selectionRef.setAttribute('disabled', true);
+        selectionRef.setAttribute('aria-disabled', true);
+      } else {
+        selectionRef.removeAttribute('disabled');
+        selectionRef.setAttribute('aria-disabled', false);
+      }
+    }
+
+    if (this.props.mode !== 'default' && node.inputRef && this.props['aria-label']) {
+      node.inputRef.setAttribute('aria-label', this.props['aria-label']);
     }
   };
 
@@ -184,8 +201,8 @@ export default class Select<T = SelectValue> extends React.Component<SelectProps
   }
 
   isCombobox() {
-    const { mode } = this.props;
-    return mode === 'combobox' || mode === Select.SECRET_COMBOBOX_MODE_DO_NOT_USE;
+    const { mode, showSearch } = this.props;
+    return showSearch || mode === 'combobox' || mode === Select.SECRET_COMBOBOX_MODE_DO_NOT_USE;
   }
 
   renderSuffixIcon(prefixCls: string) {

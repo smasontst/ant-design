@@ -87,6 +87,7 @@ class SearchInput extends React.Component {
         onSearch={this.handleSearch}
         onChange={this.handleChange}
         notFoundContent={null}
+        aria-label="my-searchbox"
       >
         {options}
       </Select>

@@ -47,12 +47,19 @@ class SelectSizesDemo extends React.Component {
         </Radio.Group>
         <br />
         <br />
-        <Select size={size} defaultValue="a1" onChange={handleChange} style={{ width: 200 }}>
+        <Select
+          aria-label="my-label-6"
+          size={size}
+          defaultValue="a1"
+          onChange={handleChange}
+          style={{ width: 200 }}
+        >
           {children}
         </Select>
         <br />
         <Select
           mode="multiple"
+          aria-label="my-multiple-label"
           size={size}
           placeholder="Please select"
           defaultValue={['a10', 'c12']}
@@ -64,6 +71,7 @@ class SelectSizesDemo extends React.Component {
         <br />
         <Select
           mode="tags"
+          aria-label="my-tags-label"
           size={size}
           placeholder="Please select"
           defaultValue={['a10', 'c12']}

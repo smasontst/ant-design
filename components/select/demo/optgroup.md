@@ -23,7 +23,12 @@ function handleChange(value) {
 }
 
 ReactDOM.render(
-  <Select defaultValue="lucy" style={{ width: 200 }} onChange={handleChange}>
+  <Select
+    aria-label="my-label-5"
+    defaultValue="lucy"
+    style={{ width: 200 }}
+    onChange={handleChange}
+  >
     <OptGroup label="Manager">
       <Option value="jack">Jack</Option>
       <Option value="lucy">Lucy</Option>

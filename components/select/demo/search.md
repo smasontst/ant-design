@@ -47,6 +47,7 @@ ReactDOM.render(
     filterOption={(input, option) =>
       option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
     }
+    aria-label="my-search"
   >
     <Option value="jack">Jack</Option>
     <Option value="lucy">Lucy</Option>

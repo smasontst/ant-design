@@ -33,6 +33,7 @@ class SelectWithHiddenSelectedOptions extends React.Component {
     return (
       <Select
         mode="multiple"
+        aria-label="my-multiple-label"
         placeholder="Inserted are removed"
         value={selectedItems}
         onChange={this.handleChange}
